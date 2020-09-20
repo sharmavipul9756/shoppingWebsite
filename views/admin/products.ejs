@@ -1,8 +1,9 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/product.css">
     </head>
+    <body class="image-fluid"
+ style="background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; background-image: url( https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80);">
 
-    <body>
         <%- include('../includes/navigation.ejs') %>
 
             <main>
@@ -12,25 +13,26 @@
                             <article class="card product-item">
                                 <header class="card__header">
                                     <h1 class="product__title">
-                                        <%= product.title %>
+                                        <%= product.firstName %> &nbsp;&nbsp; <%= product.lastName %> 
                                     </h1>
                                 </header>
                                 <div class="card__image">
-                                    <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                                    <img src="<%= product.imageUrl %>" alt="<%= product.firstName %>">
                                 </div>
                                 <div class="card__content">
-                                    <h2 class="product__price">$
-                                        <%= product.price %>
+                                    <h2 class="product__price">
+                                        <%= product.gender %>
                                     </h2>
                                     <p class="product__description">
                                         <%= product.description %>
                                     </p>
                                 </div>
                                 <div class="card__actions">
-                                    <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn">Edit</a>
+                                    <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn">Edit Profile</a>
                                     <form action="/admin/delete-product" method="POST">
                                         <input type="hidden" value="<%= product._id %>" name="productId">
-                                        <button class="btn" type="submit">Delete</button>
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button class="btn" type="submit">Remove</button>
                                     </form>
 
                                 </div>
@@ -38,7 +40,7 @@
                             <% } %>
                     </div>
                     <% } else { %>
-                        <h1>No Products Found!</h1>
+                        <h1>No Profiles Found</h1>
                         <% } %>
             </main>
             <%- include('../includes/end.ejs') %>

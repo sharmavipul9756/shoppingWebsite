@@ -1,16 +1,32 @@
 <%- include('../includes/head.ejs') %>
     </head>
 
-    <body>
+    <body class="image-fluid"
+ style="background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; background-image: url(https://images.unsplash.com/photo-1530543787849-128d94430c6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);">
+
         <%- include('../includes/navigation.ejs') %>
         <main class="centered">
-            <h1><%= product.title %></h1>
+            <h1><%= product.firstName %>&nbsp;&nbsp;<%= product.lastName %></h1>
             <hr>
             <div class="image">
-                <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                <img src="<%= product.imageUrl %>" alt="<%= product.firstName %>">
             </div>
-            <h2><%= product.price %></h2>
-            <p><%= product.description %></p>
+            <div class="container" style="text-align:left ">
+            <h4>Gender : <%= product.gender %></h4>
+            <h4>Religion : <%= product.religion %></h4>
+            <h4>Date of Birth : <%= product.birth %></h4>
+            <h4>Contact number : <%= product.number %></h4>
+            <h4>Email : <%= product.email %></h4>
+            <h4>Postal Code : <%= product.postal %></h4>
+            <p>Residential Address : <%= product.address %></p>
+            <p>About user : <%= product.description %></p>
+            </div>
+            <div class="image">
+                <img src="<%= product.imageUrl2 %>" alt="<%= product.firstName %>">
+            </div>
+             <div class="image">
+                <img src="<%= product.imageUrl3 %>" alt="<%= product.firstName %>">
+            </div>
             <% if (isAuthenticated) { %>
                 <%- include('../includes/add-to-cart.ejs', {product: product}) %>
             <% } %>

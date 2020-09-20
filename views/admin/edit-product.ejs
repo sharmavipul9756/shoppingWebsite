@@ -3,32 +3,76 @@
     <link rel="stylesheet" href="/css/product.css">
 </head>
 
-<body>
+<body class="image-fluid"
+ style="background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; background-image: url(https://images.unsplash.com/photo-1501349800519-48093d60bde0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);">
+
    <%- include('../includes/navigation.ejs') %>
 
     <main>
         <form class="product-form" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST">
             <div class="form-control">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" value="<% if (editing) { %><%= product.title %><% } %>">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName" value="<% if (editing) { %><%= product.firstName %><% } %>">
             </div>
             <div class="form-control">
-                <label for="imageUrl">Image URL</label>
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName" value="<% if (editing) { %><%= product.lastName %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="imageUrl">Profile Image</label>
                 <input type="text" name="imageUrl" id="imageUrl" value="<% if (editing) { %><%= product.imageUrl %><% } %>">
             </div>
             <div class="form-control">
-                <label for="price">Price</label>
-                <input type="number" name="price" id="price" step="0.01" value="<% if (editing) { %><%= product.price %><% } %>">
+                <label for="imageUrl2">Image 2</label>
+                <input type="text" name="imageUrl2" id="imageUrl2" value="<% if (editing) { %><%= product.imageUrl2 %><% } %>">
             </div>
             <div class="form-control">
-                <label for="description">Description</label>
+                <label for="imageUrl3">Image 3</label>
+                <input type="text" name="imageUrl3" id="imageUrl3" value="<% if (editing) { %><%= product.imageUrl3 %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="birth">DOB</label>
+                <input type="date" name="birth" id="birth"  value="<% if (editing) { %><%= product.birth %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="religion">Religion</label>
+                <input type="text" name="religion" id="religion" value="<% if (editing) { %><%= product.religion %><% } %>">
+            </div>
+            
+            <div class="form-control">
+                <label for="gender">Gender</label>
+                <input type="text" name="gender" id="gender" value="<% if (editing) { %><%= product.gender %><% } %>">
+            </div>
+
+            <div class="form-control">
+                <label for="phNumber">Phone Number</label>
+                <input type="number" name="phNumber" id="phNumber" value="<% if (editing) { %><%= product.phNumber %><% } %>">
+            </div>
+
+            <div class="form-control">
+                <label for="email">E-mail Address</label>
+                <input type="email" name="email" id="email" value="<% if (editing) { %><%= product.email %><% } %>">
+            </div>
+
+            <div class="form-control">
+                <label for="address">Address </label>
+                <textarea name="address" id="address" rows="5"><% if (editing) { %><%= product.address %><% } %></textarea>
+            </div>
+
+            <div class="form-control">
+                <label for="postal">Postal Code</label>
+                <input type="number" name="postal" id="postal" value="<% if (editing) { %><%= product.postal %><% } %>">
+            </div>
+
+            <div class="form-control">
+                <label for="description">Tell us about yourself </label>
                 <textarea name="description" id="description" rows="5"><% if (editing) { %><%= product.description %><% } %></textarea>
             </div>
             <% if (editing) { %>
                 <input type="hidden" value="<%= product._id %>" name="productId">
             <% } %>
-
-            <button class="btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Add Product<% } %></button>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">     
+            <button class="btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Register Profile<% } %></button>
         </form>
     </main>
 <%- include('../includes/end.ejs') %>
