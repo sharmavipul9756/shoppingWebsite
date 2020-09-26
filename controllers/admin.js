@@ -1,4 +1,6 @@
 const Product = require('../models/product');
+const { count } = require('../models/user');
+const user = require('../models/user');
 
 exports.getAddProduct = (req, res, next) => {
   if(!req.session.isLoggedIn) {
@@ -21,11 +23,17 @@ exports.postAddProduct = (req, res, next) => {
   const gender = req.body.gender;
   const phNumber = req.body.phNumber;
   const email = req.body.email;
+  const country = req.body.country;
   const address = req.body.address;
   const postal = req.body.postal; 
-  const imageUrl = req.body.imageUrl;
-  const imageUrl2 = req.body.imageUrl2;
-  const imageUrl3 = req.body.imageUrl3;
+  const image1 = req.files['image1'][0];
+  const image2 = req.files['image2'][0];
+  const image3 = req.files['image3'][0];
+  // console.log(imageUrl)
+  const imageUrl = image1.path;
+  const imageUrl2 = image2.path;
+  const imageUrl3 = image3.path;
+  console.log(imageUrl)
 
   const product = new Product({
     firstName: firstName,
@@ -36,6 +44,7 @@ exports.postAddProduct = (req, res, next) => {
     gender:gender,
     phNumber:phNumber,
     email:email,
+    country: country,
     address:address,
     postal:postal,
     imageUrl:imageUrl,
@@ -87,14 +96,18 @@ exports.postEditProduct = (req, res, next) => {
   const updatedGender = req.body.gender;
   const updatedNumber = req.body.phNumber;
   const updatedEmail = req.body.email;
+  const updatedCountry = req.body.country;
   const updatedAddress = req.body.address;
   const updatedPostal = req.body.postal; 
-  const updatedImage = req.body.imageUrl;
-  const updatedImage2 = req.body.imageUrl2;
-  const updatedImage3 = req.body.imageUrl3;
+  const image1 = req.files['image1'];
+  const image2 = req.files['image2'];
+  const image3 = req.files['image3'];
 
   Product.findById(prodId)
     .then(product => {
+      if(product.userId.toString() !== req.user._id.toString()) {
+        return res.redirect('/');
+      }
       product.firstName = updatedFirstName;
       product.lastName = updatedLastName;
       product.description = updatedDescription;
@@ -103,24 +116,33 @@ exports.postEditProduct = (req, res, next) => {
       product.gender = updatedGender;
       product.phNumber = updatedNumber;
       product.email = updatedEmail;
+      product.country = updatedCountry;
       product.address = updatedAddress;
       product.postal = updatedPostal;
-      product.imageUrl = updatedImage;
-      product.imageUrl2 = updatedImage2;
-      product.imageUrl3 = updatedImage3;
+      if(image1) {
+      product.imageUrl = image1.path;
+      }
+      if(image2) {
+      product.imageUrl2 = image2.path;
+      }
+      if(image3) {
+      product.imageUrl3 = image3.path;
+      }
 
 
-      return product.save();
+
+      return product.save()
+      .then(result => {
+        console.log('UPDATED PRODUCT!');
+        res.redirect('/admin/products');
+      })
     })
-    .then(result => {
-      console.log('UPDATED PRODUCT!');
-      res.redirect('/admin/products');
-    })
+    
     .catch(err => console.log(err));
 };
 
 exports.getProducts = (req, res, next) => {
-  Product.find()
+  Product.find({userId : req.user._id})
     // .select('title price -_id')
     // .populate('userId', 'name')
     .then(products => {
@@ -137,7 +159,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findByIdAndRemove(prodId)
+  Product.deleteOne({_id: prodId,userId: req.user._id})
     .then(() => {
       console.log('DESTROYED PRODUCT');
       res.redirect('/admin/products');

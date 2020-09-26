@@ -1,8 +1,11 @@
 const Product = require('../models/product');
-const Order = require('../models/order');
+
 
 exports.getProducts = (req, res, next) => {
-  Product.find()
+  // Product.find()
+  // userId = req.user;
+  // if(!Product.find({userId : req.user._id})) {
+    Product.find({userId : {$nin : req.user._id} })
     .then(products => {
       console.log(products);
       res.render('shop/product-list', {
@@ -14,11 +17,12 @@ exports.getProducts = (req, res, next) => {
     })
     .catch(err => {
       console.log(err);
-    });
+    }); 
 };
 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
+ 
   Product.findById(prodId)
     .then(product => {
       res.render('shop/product-detail', {
@@ -32,6 +36,7 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
+  // userId = req.user;
   Product.find()
     .then(products => {
       res.render('shop/index', {

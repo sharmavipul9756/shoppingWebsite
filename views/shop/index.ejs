@@ -9,11 +9,13 @@
  style="background-repeat: no-repeat; background-position : center; background-size: cover; background-image: url(https://images.unsplash.com/photo-1511184150666-9bb7d41a88f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);">
     <%- include('../includes/navigation.ejs') %>
 
-    <main>
+    <div style="position: sticky; top: 10rem; z-index: -1;">
+      <main>
         <% if (prods.length > 0) { %>
            
- <div class="container-fluid">
+ <div class="container ">
      <img width="100%" height="450px" src="https://images.unsplash.com/photo-1518104593124-ac2e82a5eb9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+     class="img-fluid"
      style="background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; position: relative;" >
 
      <div style = "top:60%; left:10%; position:absolute;background-color:#D5D0FF; width:50%; opacity:0.8;">
@@ -59,68 +61,15 @@
                       }
                   }
               </style>
-
-<h2 class="text-dark" style="text-align: center; margin-bottom:3rem;">Testimonials</h2>
-              <div class="container" 
-              style="flex-direction: row; display:flex; flex-flow: wrap; justify-content: space-around;">
-               
-             
-
-                <div class="card" style="width: 18rem;">
-                   <img src="https://images.unsplash.com/photo-1514483127413-f72f273478c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                     </p>
-                   </div>
-                 </div>
-   
-                 <div class="card" style="width: 18rem;">
-                   <img src="https://images.unsplash.com/photo-1514483127413-f72f273478c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                     </p>
-                   </div>
-                 </div>
-                 
-                 <div class="card" style="width: 18rem;">
-                   <img src="https://images.unsplash.com/photo-1514483127413-f72f273478c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                     </p>
-                   </div>
-                 </div>
-               </div>
-
+ 
                <div class="card" style="width: 100%; background: #FFBB55; margin-top: 3rem; margin-bottom: 3rem; ">
                 <div class="card-body">
-                  <h5 class="card-title">Join the Community</h5>
+                  <h5 class="card-title">Find Your Match</h5>
                   <a href="/signup" class="btn btn-primary">Sign Up !</a>
                 </div>
               </div>
         
-        
-          <form>
-          <div class="form-group" style="margin-top: 20vw; margin-left: 10vw; margin-right: 10vw; ">
-            <h2 for="exampleInputEmail1">Subscribe to the Newsletter</h2>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-         
-          <div class="form-check" style="margin-left: 10vw;">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-          <button type="submit" class="btn btn-primary"  style="margin-left: 10vw;">Submit</button>
-        </form>
+      
          
         
         <footer style="text-align: center; margin-top: 10vw; color: black;">
@@ -153,8 +102,8 @@
         <% } else { %>
 
                     
- <div class="container-fluid">
-    <img class="image-fluid" width="100%" height="50%" src="https://images.unsplash.com/photo-1518104593124-ac2e82a5eb9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+ <div>
+    <img  width="100%" height="50%" src="https://images.unsplash.com/photo-1518104593124-ac2e82a5eb9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
     style="background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover;" >
 </div>
                    
@@ -198,66 +147,14 @@
                   }
               </style>
 
-              <div class="container" 
-              style="flex-direction: row; display:flex; flex-flow: wrap; justify-content: space-around;">
-
-                <div class="card" style="width: 18rem;">
-                   <img src="https://images.unsplash.com/photo-1514483127413-f72f273478c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                     </p>
-                   </div>
-                 </div>
-   
-                 <div class="card" style="width: 18rem;">
-                   <img src="https://images.unsplash.com/photo-1514483127413-f72f273478c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                     </p>
-                   </div>
-                 </div>
-                 
-                 <div class="card" style="width: 18rem;">
-                   <img src="https://images.unsplash.com/photo-1514483127413-f72f273478c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="...">
-                   <div class="card-body">
-                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                       Some quick example text to build on the card title and make up the bulk of the card's content.
-                     </p>
-                   </div>
-                 </div>
-               </div>
+            
 
                <div class="card" style="width: 100%; background: #FFBB55; margin-top: 2rem; margin-bottom: 2rem; ">
                 <div class="card-body">
-                  <h5 class="card-title">Join the Community</h5>
+                  <h5 class="card-title">Find Your Match</h5>
                   <a href="/signup" class="btn btn-primary">Sign Up !</a>
                 </div>
               </div>
-        
-       
-         <form>
-         <div class="form-group" style="margin-top: 20vw; margin-left: 10vw; margin-right: 10vw; ">
-           <h2 for="exampleInputEmail1">Subscribe to the Newsletter</h2>
-           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-         </div>
-        
-         <div class="form-check" style="margin-left: 10vw;">
-           <input type="checkbox" class="form-check-input" id="exampleCheck1">
-           <label class="form-check-label" for="exampleCheck1">Check me out</label>
-         </div>
-         <button type="submit" class="btn btn-primary"  style="margin-left: 10vw;">Submit</button>
-       </form>
-        
-       
        <footer style="text-align: center; margin-top: 10vw; color: black;">
          <h5>© 2020 Matrimonial</h5>
        </footer> 
@@ -265,4 +162,5 @@
 
         <% } %>
     </main>
+    </div>
 <%- include('../includes/end.ejs') %>

@@ -9,23 +9,21 @@
             <h1><%= product.firstName %>&nbsp;&nbsp;<%= product.lastName %></h1>
             <hr>
             <div class="image">
-                <img src="<%= product.imageUrl %>" alt="<%= product.firstName %>">
+                <img src="/<%= product.imageUrl %>" alt="<%= product.firstName %>">
             </div>
             <div class="container" style="text-align:left ">
             <h4>Gender : <%= product.gender %></h4>
             <h4>Religion : <%= product.religion %></h4>
             <h4>Date of Birth : <%= product.birth %></h4>
-            <h4>Contact number : <%= product.number %></h4>
-            <h4>Email : <%= product.email %></h4>
+            <h4>Country : <%= product.country %></h4>
             <h4>Postal Code : <%= product.postal %></h4>
-            <p>Residential Address : <%= product.address %></p>
             <p>About user : <%= product.description %></p>
             </div>
             <div class="image">
-                <img src="<%= product.imageUrl2 %>" alt="<%= product.firstName %>">
+                <img src="/<%= product.imageUrl2 %>" alt="<%= product.firstName %>">
             </div>
              <div class="image">
-                <img src="<%= product.imageUrl3 %>" alt="<%= product.firstName %>">
+                <img src="/<%= product.imageUrl3 %>" alt="<%= product.firstName %>">
             </div>
             <% if (isAuthenticated) { %>
                 <%- include('../includes/add-to-cart.ejs', {product: product}) %>

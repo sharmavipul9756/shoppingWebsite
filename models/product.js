@@ -22,7 +22,7 @@ const productSchema = new Schema({
     required: true
   },
   birth: {
-    type: Date,
+    type: String,
     required: true
   },
   religion: {
@@ -42,6 +42,10 @@ const productSchema = new Schema({
     required: true
   },
   email: {
+    type: String,
+    required: true
+  },
+  country: {
     type: String,
     required: true
   },

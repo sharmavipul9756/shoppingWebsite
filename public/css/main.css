@@ -38,6 +38,7 @@ form {
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
+  /* position: fixed; */
 }
 
 .main-header__nav {
@@ -171,6 +172,8 @@ form {
 
 .card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  background-color: white;
+
 }
 
 .card__header,
