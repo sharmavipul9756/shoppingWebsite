@@ -21,7 +21,15 @@ const productSchema = new Schema({
     type: String,
     required: true
   },
+  idProof: {
+    type: String,
+    required: true
+  },
   birth: {
+    type: String,
+    required: true
+  },
+  birth1: {
     type: String,
     required: true
   },
@@ -41,10 +49,7 @@ const productSchema = new Schema({
     type: String,
     required: true
   },
-  email: {
-    type: String,
-    required: true
-  },
+
   country: {
     type: String,
     required: true

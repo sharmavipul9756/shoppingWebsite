@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+// const stripe = require('stripe')('sk_test_51HVx9ZGhHrWNdBHOq8vtsvM0gXu4omgWgbmjCr8iexRvnlZ9WKAcqFyvrXda3upvfLGS2FIvCk8ohLzfToRmec5I00rcQIZclC')
 
 
 exports.getProducts = (req, res, next) => {
@@ -52,11 +53,13 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getCart = (req, res, next) => {
+  let products;
   req.user
     .populate('cart.items.productId')
     .execPopulate()
     .then(user => {
       const products = user.cart.items;
+      // return stripe.getCheckout.sessions.create()
       res.render('shop/cart', {
         path: '/cart',
         pageTitle: 'Favourites',
@@ -87,5 +90,14 @@ exports.postCartDeleteProduct = (req, res, next) => {
       res.redirect('/cart');
     })
     .catch(err => console.log(err));
+};
+
+exports.getCheckout = (req,res,next) => {
+  res.render('shop/product-detail', {
+    product: product,
+    pageTitle: product.title,
+    path: '/products',
+    isAuthenticated: req.session.isLoggedIn
+  });
 };
 

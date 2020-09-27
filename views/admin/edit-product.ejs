@@ -1,6 +1,11 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/forms.css">
     <link rel="stylesheet" href="/css/product.css">
+    <script>
+        if(req.user._id) {
+           document.getElementById('btn').disabled = true
+        }
+    </script>
 </head>
 
 <body class="image-fluid"
@@ -31,8 +36,14 @@
                 <input type="file" name="image3" id="imageUrl3" value="<% if (editing) { %><%= product.imageUrl3 %><% } %>">
             </div>
             <div class="form-control">
+                <label for="idProof">Id Proof</label>
+                <input type="file" name="idProofString" id="idProof" value="<% if (editing) { %><%= product.idProof %><% } %>">
+                <p>Your Id proof should contain your picture and date of birth</p>
+            </div>
+            <div class="form-control">
                 <label for="birth">DOB</label>
                 <input type="date" name="birth" id="birth"  value="<% if (editing) { %><%= product.birth %><% } %>">
+                <input type="number" name="birth1" id="birth1" placeholder="In Numbers" value="<% if (editing) { %><%= product.birth1 %><% } %>">
             </div>
             <div class="form-control">
                 <label for="religion">Religion</label>
@@ -351,7 +362,7 @@
                 <input type="hidden" value="<%= product._id %>" name="productId">
             <% } %>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">     
-            <button class="btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Register Profile<% } %></button>
+            <button class="btn" type="submit"><% if (editing) { %>Update Product<%} else { %>Register Profile<% } %></button>
         </form>
     </main>
     <!-- </div> -->

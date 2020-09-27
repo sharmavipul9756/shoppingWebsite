@@ -38,7 +38,9 @@ form {
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
-  /* position: fixed; */
+  position: sticky;
+  z-index: 1;
+  top: 0;
 }
 
 .main-header__nav {

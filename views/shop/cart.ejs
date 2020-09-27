@@ -11,22 +11,23 @@
                     <% products.forEach(p => { %>
                         <li class="cart__item">
                             <h1><%= p.productId.firstName %> <%= p.productId.lastName %></h1> 
+                            <h2>E mail - <%= p.productId.email %>></h2>
                             <form action="/cart-delete-item" method="POST">
                                 <input type="hidden" value="<%= p.productId._id %>" name="productId">
-                                <button class="btn btn info" type="submit">Email</button>
-
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <button class="btn btn danger" type="submit">Remove</button>
                             </form>
+                            
                         </li>
                     <% }) %>
                 </ul>
                 <hr>
-                <div class="centered">
+                <!-- <div class="centered">
                     <form action="/create-order" method="POST">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                         <button type="submit" class="btn">Order Now!</button>
                     </form>
-                </div>
+                </div> -->
                 
             <% } else { %>
                 <h1>No Favourite Profiles</h1>

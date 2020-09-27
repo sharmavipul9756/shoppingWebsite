@@ -1,5 +1,10 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/forms.css">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
 
     <body class="image-fluid"
@@ -8,6 +13,32 @@
         <%- include('../includes/navigation.ejs') %>
 
             <main>
+                <form action="/products" id="filterForm" class="product-form" method="POST" style="position: relative;"> 
+                   
+                    <div class="form-control">
+                        <label for="religion">Filter By Religion</label>
+                        <input type="text" name="religion" id="religion">
+                    </div>
+
+                    <div class="form-control">
+                        <label for="Gender">Filter By Gender</label>
+                        <input type="text" name="gender" id="gender">
+                    </div>
+                    <div class="form-control">
+                        <label for="country">Filter By Country</label>
+                        <input type="text" name="country" id="country">
+                    </div>
+                  
+                    <div class="form-control>
+                      <!-- <div class="col-sm-3"> -->
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" name="submit">Filter Profiles</button>
+                      </div>
+                    <!-- </div> -->
+                  </form>
+
+                  
+
                 <% if (prods.length > 0) { %>
                     <div class="grid";">
                         <% for (let product of prods) { %>
@@ -25,7 +56,10 @@
                                         <%= product.gender %>
                                     </h2>
                                     <p class="product__description">
-                                        <%= product.description %>
+                                        <%= product.country %>
+                                    </p>
+                                    <p class="product__description">
+                                        <%= product.religion %>
                                     </p>
                                 </div>
                                 <div class="card__actions">
@@ -40,5 +74,8 @@
                     <% } else { %>
                         <h1>No Profiles Found!</h1>
                         <% } %>
+                        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
             </main>
             <%- include('../includes/end.ejs') %>

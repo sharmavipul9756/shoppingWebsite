@@ -18,6 +18,7 @@ exports.postAddProduct = (req, res, next) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const birth = req.body.birth;
+  const birth1 = req.body.birth1
   const description = req.body.description;
   const religion = req.body.religion;
   const gender = req.body.gender;
@@ -29,17 +30,20 @@ exports.postAddProduct = (req, res, next) => {
   const image1 = req.files['image1'][0];
   const image2 = req.files['image2'][0];
   const image3 = req.files['image3'][0];
+  const idProofString = req.files['idProofString'][0];
   // console.log(imageUrl)
   const imageUrl = image1.path;
   const imageUrl2 = image2.path;
   const imageUrl3 = image3.path;
-  console.log(imageUrl)
+  const idProof = idProofString.path; 
+  // console.log(imageUrl)
 
   const product = new Product({
-    firstName: firstName,
-    lastName: lastName,
+    firstName: firstName.toUpperCase(),
+    lastName: lastName.toUpperCase(),
     description: description,
     birth : birth,
+    birth1 : birth1,
     religion:religion,
     gender:gender,
     phNumber:phNumber,
@@ -50,6 +54,7 @@ exports.postAddProduct = (req, res, next) => {
     imageUrl:imageUrl,
     imageUrl2:imageUrl2,
     imageUrl3:imageUrl3, 
+    idProof: idProof,
     userId: req.user
   });
   product
@@ -91,6 +96,7 @@ exports.postEditProduct = (req, res, next) => {
   const updatedFirstName = req.body.firstName;
   const updatedLastName = req.body.lastName;
   const updatedDob = req.body.birth;
+  const updatedBirth1 = req.body.birth1
   const updatedDescription = req.body.description;
   const updatedReligion = req.body.religion;
   const updatedGender = req.body.gender;
@@ -102,6 +108,8 @@ exports.postEditProduct = (req, res, next) => {
   const image1 = req.files['image1'];
   const image2 = req.files['image2'];
   const image3 = req.files['image3'];
+  const idProofString = req.files['idProofString'];
+  
 
   Product.findById(prodId)
     .then(product => {
@@ -112,6 +120,7 @@ exports.postEditProduct = (req, res, next) => {
       product.lastName = updatedLastName;
       product.description = updatedDescription;
       product.birth = updatedDob;
+      product.birth1 = updatedBirth1;
       product.religion = updatedReligion;
       product.gender = updatedGender;
       product.phNumber = updatedNumber;
@@ -127,6 +136,9 @@ exports.postEditProduct = (req, res, next) => {
       }
       if(image3) {
       product.imageUrl3 = image3.path;
+      }
+      if(idProof) {
+        product.idProof = idProofString.path;
       }
 
 
